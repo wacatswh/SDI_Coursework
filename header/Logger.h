@@ -25,10 +25,9 @@ class Logger {
 		void writeFile(const string outputFileName);
 		static void printFile(const string inputFileName);
 	private:
-		int numOfLogs = 0;
+		int numOfLog, numOfInfoLog, numOfErrorLog, numOfDebugLog;
 		unorderedLinkedList<string> list;
 		std::chrono::time_point<std::chrono::system_clock> start, end;
-		void incrementNumOfLogs();
 };
 
 #endif /* LOGGER_H_ */

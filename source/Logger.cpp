@@ -10,6 +10,7 @@ using namespace std;
 
 Logger::Logger()
 {
+	numOfLog = numOfInfoLog = numOfErrorLog = numOfDebugLog = 0;
 	start = std::chrono::system_clock::now();
 }
 
@@ -20,12 +21,7 @@ Logger::~Logger()
 
 void Logger::showNumOfLogs()
 {
-	cout << "Total logs: " << numOfLogs << endl;
-}
-
-void Logger::incrementNumOfLogs()
-{
-	numOfLogs++;
+	cout << "Total logs: " << numOfLog << endl;
 }
 
 void Logger::printAll()
@@ -64,28 +60,28 @@ void Logger::log(const int logLevel, const string logMessage, const int lineNumb
 	case 0:
 		temp = "Line " + tempLineNumber + ": " + "[INFO] " + logMessage;
 		list.unorderedLinkedList<string>::insertLast(temp);
-		incrementNumOfLogs();
+		numOfLog++;
 		break;
 
 	// logLevel == 1 is error
 	case 1:
 		temp = "Line " + tempLineNumber + ": " + "[ERROR] " + logMessage;
 		list.unorderedLinkedList<string>::insertLast(temp);
-		incrementNumOfLogs();
+		numOfLog++;
 		break;
 
 	// logLevel == 2 is debug
 	case 2:
 		temp = "Line " + tempLineNumber + ": " + "[DEBUG] " + logMessage;
 		list.unorderedLinkedList<string>::insertLast(temp);
-		incrementNumOfLogs();
+		numOfLog++;
 		break;
 
 	// logLevel == 3 is warning
 	case 3:
 		temp = "Line " + tempLineNumber + ": " + "[WARNING] " + logMessage;
 		list.unorderedLinkedList<string>::insertLast(temp);
-		incrementNumOfLogs();
+		numOfLog++;
 		break;
 
 	default:

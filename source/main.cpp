@@ -12,9 +12,12 @@ int main()
 	logObj.log(1, "log test error", __LINE__);
 	logObj.log(2, "log test debug", __LINE__);
 	logObj.log(3, "log test warning", __LINE__);
-	logObj.printAll();
+	logObj.log(4, "log test default case in switch");
 
-	logObj.showNumOfLogs();
+	//logObj.printAll();	
+
+	logObj.printByType(0);
+
 	logObj.writeFile("hohohaha.log");
 	// Logger::printFile("hohohaha.log");
 

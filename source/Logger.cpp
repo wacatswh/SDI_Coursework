@@ -29,24 +29,30 @@ void Logger::printAll()
 	list.linkedListType<string>::print();
 }
 
-void Logger::printInfo()
+void Logger::printByType(const int i)
 {
+	switch (i)
+	{
+	case 0:
+		list.unorderedLinkedList::printLogType("INFO");
+		break;
 
-}
+	case 1:
+		list.unorderedLinkedList::printLogType("ERROR");
+		break;
 
-void Logger::printError()
-{
+	case 2:
+		list.unorderedLinkedList::printLogType("DEBUG");
+		break;
 
-}
+	case 3:
+		list.unorderedLinkedList::printLogType("WARNING");
+		break;
 
-void Logger::printDebug()
-{
-
-}
-
-void Logger::printWarning()
-{
-
+	default:
+		Logger::log(3, "Wrong parameter! Send valid logLevel 0 - 3 as parameter.");
+		break;
+	}
 }
 
 void Logger::log(const int logLevel, const string logMessage, const int lineNumber)
@@ -85,7 +91,8 @@ void Logger::log(const int logLevel, const string logMessage, const int lineNumb
 		break;
 
 	default:
-		cout << "Wrong parameter! Send logLevel as first parameter." << endl;
+		Logger::log(3, "Wrong parameter! Send valid logLevel 0 - 3 as first parameter.");
+		break;
 	}
 }
 
@@ -99,6 +106,8 @@ void Logger::writeFile(const string outputFileName)
 
 	ofstream outFile;
 	outFile.open(outputFileName, ios::app);
+
+	outFile << "Total logs: " << numOfLog << "\n";
 
 	#pragma warning(disable : 4996)
 	outFile << "Finished at " << std::ctime(&end_time) << "\n";
@@ -133,6 +142,8 @@ void Logger::stopLogger()
 
 	std::chrono::duration<double> elapsed_seconds = end - start;
 	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+	showNumOfLogs();
 
 	#pragma warning(disable : 4996)
 	cout << "Finished at " << std::ctime(&end_time)

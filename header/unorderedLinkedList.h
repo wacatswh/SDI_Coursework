@@ -8,6 +8,7 @@
 #ifndef UNORDEREDLINKEDLIST_H_
 #define UNORDEREDLINKEDLIST_H_
 
+#include <string>
 #include <fstream>
 #include <iostream>
 #include "linkedListType.h"
@@ -43,8 +44,10 @@ public:
 		// points to the last node of the updated
 		// list, and count is decremented by 1.
 	void writeFile(const string fileName) const;
+	void printLogType(const string logType) const;
 };
 
+// write to file, modified from other part of codes
 template <class Type>
 void unorderedLinkedList<Type>::writeFile(const string fileName) const
 {
@@ -62,6 +65,27 @@ void unorderedLinkedList<Type>::writeFile(const string fileName) const
 	}
 		
 	outFile.close();
+}
+
+// print log by their type, modified from other part of codes
+template <class Type>
+void unorderedLinkedList<Type>::printLogType(const string logType) const
+{
+	nodeType<Type> *current; //pointer to traverse the list
+	current = this->first;//set current to point to the first
+						  //node in the list
+	while (current != NULL) //search the list
+	{
+		if (current->info.find(logType) != std::string::npos) //searchItem is found
+		{
+			cout << current->info << endl;
+			current = current->link;
+		}
+			
+		else
+			current = current->link; //make current point to
+									 //the next node
+	}
 }
 
 template <class Type>

@@ -17,11 +17,8 @@ class Logger {
 		void showNumOfLogs();
 		void stopLogger();
 		void printAll();
-		void printInfo();
-		void printError();
-		void printDebug();
-		void printWarning();
-		void log(const int logLevel, const string logMessage, const int lineNumber);
+		void printByType(const int i);
+		void log(const int logLevel, const string logMessage, const int lineNumber = 0);
 		void writeFile(const string outputFileName);
 		static void printFile(const string inputFileName);
 	private:

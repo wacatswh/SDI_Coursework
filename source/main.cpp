@@ -17,6 +17,7 @@ int main()
 	//logObj.printAll();	
 
 	logObj.printByType(0);
+	logObj.printByType(3);	
 
 	logObj.writeFile("hohohaha.log");
 	// Logger::printFile("hohohaha.log");

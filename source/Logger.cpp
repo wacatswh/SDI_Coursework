@@ -11,12 +11,12 @@ using namespace std;
 Logger::Logger()
 {
 	numOfLog = numOfInfoLog = numOfErrorLog = numOfDebugLog = 0;
-	start = std::chrono::system_clock::now();
+	start = std::chrono::system_clock::now(); // start clock when Logger object is created
 }
 
 Logger::~Logger()
 {
-	
+	list.linkedListType::destroyList();
 }
 
 void Logger::showNumOfLogs()
